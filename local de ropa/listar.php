@@ -18,6 +18,9 @@
         <th>MARCA</th>
         <th>TALLE</th>
         <th>PRECIO</th>
+        <th>IMAGEN</th>
+        <th>EDITAR</th>
+        <th>BORRAR</th>
     </tr>
     <?php
     // 1) Conexion
@@ -42,10 +45,14 @@
     while (  $reg=mysqli_fetch_array($datos) ) { ?>
         <tr>
         <td><?php echo $reg['id']; ?></td>
-        <td><?php echo $reg['tipo de prenda']; ?></td>
+        <td><?php echo $reg['tipo_prenda']; ?></td>
         <td><?php echo $reg['marca']; ?></td>
         <td><?php echo $reg['talle']; ?></td>
         <td><?php echo $reg['precio']; ?></td>
+        <td><img src="data:image/png;base64, <?php echo base64_encode($reg['imagen'])?>" alt="" width="100px" height="100px"></td>
+        <td><a href="modificar.php?id=<?php echo $reg['id'];?>">Editar</a></td>
+        <td><a href="borrar.php?id=<?php echo $reg['id'];?>">Borrar</a></td>
+
         </tr>
     <?php } ?>
     </table>
